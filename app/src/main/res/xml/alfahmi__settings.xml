@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android" 
+	xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+
+	<ListPreference
+		android:title="SMS Center"
+		android:summary="Hidup/Mati"
+		android:key="smsCenter"
+		android:defaultValue="telkomsel"
+		android:entries="@array/alf_sms_center_main"
+		android:entryValues="@array/alf_sms_center_summary" />
+	
+	<EditTextPreference
+		android:title="PIN"
+		android:summary="1234"
+		android:key="pin"
+		android:inputType="number" />
+	
+	<EditTextPreference
+		android:title="Outlet Name"
+		android:summary="Alfahmi Project"
+		android:key="outletName" />
+	
+	<EditTextPreference
+		android:title="Outlet Moto"
+		android:summary="The Unofficial Marema Apps"
+		android:key="outletMoto" />
+	<Preference 
+		android:key="callCenter"
+		style="?android:preferenceInformationStyle"
+		android:title="Call Center"
+		android:summary="082214131211" />
+	
+</PreferenceScreen>

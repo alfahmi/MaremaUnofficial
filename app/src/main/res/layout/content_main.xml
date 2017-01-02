@@ -1,0 +1,156 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+	<!-- My rest of the layout -->
+
+	<TextView
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:textSize="0dp"
+		android:id="@+id/alf_marema_center"
+		android:layout_gravity="center"
+		android:text="server" />
+	
+
+<LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="0dp" >
+	<include layout="@layout/alfahmi_toolbar" />
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:orientation="vertical"
+		android:gravity="center|top"
+		android:padding="15dp" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="45dp"
+			android:layout_height="45dp"
+			android:paddingRight="20dp"
+            android:src="@drawable/ic_account" />
+
+        <EditText
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+			android:editable="false"
+			android:focusable="false"
+			android:focusableInTouchMode="false"
+            android:text="Alfahmut Project"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:orientation="horizontal" >
+
+		<ImageView
+            android:layout_width="45dp"
+			android:layout_height="45dp"
+			android:paddingRight="20dp"
+            android:src="@drawable/ic_phone" />
+		
+		<EditText
+			android:id="@+id/editText1"
+			android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Phone Number"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+        	android:ems="10"
+      	  	android:inputType="number" >
+
+        <requestFocus />
+		</EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="45dp"
+			android:layout_height="45dp"
+			android:paddingRight="20dp"
+            android:src="@drawable/ic_cart" />
+		
+          <Spinner
+			android:layout_weight="1"
+			android:id="@+id/spinner1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:hint="Price"
+			android:textAppearance="?android:attr/textAppearanceMedium" 
+			android:prompt="@string/business_prompt"></Spinner>
+		<EditText
+			android:id="@+id/alf_pin"
+			android:layout_width="60dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:editable="false"
+			android:focusable="false"
+			android:paddingLeft="5dp"
+			android:focusableInTouchMode="false"
+			android:text="1234"
+			android:textAppearance="?android:attr/textAppearanceMedium" />
+	</LinearLayout>
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="7dp"
+			android:orientation="horizontal" >
+
+			<ImageView
+				android:layout_width="45dp"
+				android:layout_height="45dp"
+				android:paddingRight="20dp"
+				android:src="@drawable/ic_send" />
+
+			<EditText
+				android:id="@+id/alf_sms_center"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:editable="false"
+				android:focusable="false"
+				android:focusableInTouchMode="false"
+				android:text="Fahmut"
+				android:textAppearance="?android:attr/textAppearanceMedium" />
+		</LinearLayout>
+	
+	<Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit" />
+
+	</LinearLayout>
+</LinearLayout>
+	<!-- Floating action button -->
+	<ImageButton
+		android:layout_width="60dp"
+		android:layout_height="60dp"
+		android:text="New Button"
+		android:id="@+id/alfahmi_fab"
+		android:src="@drawable/ic_account_search"
+		android:background="@drawable/alfahmi_fab_background"
+		android:layout_alignParentTop="true"
+		android:layout_alignParentRight="true"
+		android:layout_marginTop="170dp"
+		android:layout_marginRight="24dp"/>
+
+</RelativeLayout>

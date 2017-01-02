@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+     ____   __   ________   __  _______   __
+    / _  | / /  / __/ _  | / /_/ /     | / /
+   / ___ |/ /__/ _// __  |/ __  / /\/| |/ /
+  /_/  |_/____/_/ /_/  |_/_/ /_/_/   |_/_/
+
+ -->
+
+<resources>
+	
+	
+	<string-array name="alf_sms_center_main">
+		<item>telkomsel</item>
+		<item>indosat</item>
+	</string-array>
+	<string-array name="alf_sms_center_summary">
+		<item>telkomsel</item>
+		<item>indosat</item>
+	</string-array>     
+</resources>

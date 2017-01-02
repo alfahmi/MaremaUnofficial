@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="200dp"
+    android:orientation="vertical"
+	android:background="?attr/colorPrimary"> 
+	<android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+		app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:background="@android:color/transparent"
+        android:minHeight="?attr/actionBarSize"
+		android:layout_alignParentTop="true">
+    </android.support.v7.widget.Toolbar>
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textSize="30dp"
+		android:layout_marginTop="30dp"
+		android:id="@+id/alf_outlet"
+		android:textColor="?attr/colorAccent"
+		android:layout_gravity="center_horizontal"
+		android:text="FAHMI CELL" />
+	<TextView
+		android:layout_below="@id/alf_outlet"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textSize="15dp"
+		android:id="@+id/alf_outlet_moto"
+		android:textColor="#ffffff"
+		android:layout_gravity="center_horizontal"
+		android:text="Tidak terima ngutang" />
+	
+</LinearLayout>

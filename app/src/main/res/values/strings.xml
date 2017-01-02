@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">AlfahmiMarema</string>
+    <string name="action_settings">Settings</string>
+    <string name="business_prompt">Choose a Bussiness Type</string>
+    <string name="country_prompt">Choose a Country</string>
+    
+	<string name="smsEnabled">SMS Forwarding Enabled</string>
+    <string name="smsDisabled">SMS Forwarding Disabled</string>
+    <string name="smsNumberEmpty">Number is empty</string>
+    <string name="smsErrorGetNumber">An error occurred while reading contact.</string>
+    <string name="smsForwardStatus">Forwarding Status</string>
+    <string name="smsEnable">Enable</string>
+    <string name="smsDisable">Disable</string>
+    <string name="smsSave">Save</string>
+    <string name="smsPhoneBook">Phone Book</string>
+</resources>
