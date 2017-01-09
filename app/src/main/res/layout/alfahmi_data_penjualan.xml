@@ -8,16 +8,16 @@
     
 
     <TextView
-        android:id="@+id/textViewID"
+        android:id="@+id/alfahmi__penjualan_no"
         android:layout_width="20dp"
         android:layout_height="wrap_content"
-        android:text="UserID"
+        android:text="No"
 		android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
 
     <TextView
-        android:id="@+id/textViewNAME"
+        android:id="@+id/alfahmi__penjualan_nama"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 		android:layout_weight="1.0"
@@ -27,7 +27,7 @@
 
   
     <TextView
-        android:id="@+id/textViewPHONE_NUMBER"
+        android:id="@+id/alfahmi__penjualan_nomor"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1.0"
@@ -37,11 +37,11 @@
 
    
     <TextView
-        android:id="@+id/textViewSUBJECT"
+        android:id="@+id/alfahmi__penjualan_harga"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 		android:layout_weight="1.0"
-        android:text="subject"
+        android:text="harga"
 		android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceSmall"/>
 
