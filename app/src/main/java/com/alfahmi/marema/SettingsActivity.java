@@ -1,102 +1,47 @@
 package com.alfahmi.marema;
 
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.*;
+import android.view.MenuItem;
 import android.content.*;
-import android.content.SharedPreferences.*;
-import android.os.*;
-import android.preference.*;
-import android.preference.Preference.*;
-import android.view.*;
-import android.view.View.*;
-import android.widget.*;
-import android.widget.ShareActionProvider.*;
 
-
-
-public class SettingsActivity extends PreferenceActivity
+public class SettingsActivity extends AppCompatActivity
 {
+	
+	private FragmentManager fm;
+	private FragmentTransaction ft;
 
+	@Override
+	protected void onCreate(Bundle savedInstanceState)
+	{
+		// TODO: Implement this method
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.alfahmi__preference);
+		
+		getSupportActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setTitle("Pengaturan"); 
+		
+		fm = getSupportFragmentManager();
+		if (fm.findFragmentById(R.id.konten) == null) {  
+			ft = fm.beginTransaction();
+			ft.replace(R.id.konten, new com.alfahmi.marema.SettingsFragment());
+			ft.commit();
+		}  
+	}
 	
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		SharedPreferences sharedPreferences = getSharedPreferences("alfahmi.marema_preferences",Context.MODE_PRIVATE); 
-	
-		super.onCreate(savedInstanceState);
-		addPreferencesFromResource(R.xml.alfahmi__settings);
-
-		String smsCenter = sharedPreferences.getString("smsCenter","telkomsel");
-		((ListPreference)findPreference("smsCenter")).setSummary(smsCenter);
-		((ListPreference)findPreference("smsCenter")).setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
-
-			@Override
-			public boolean onPreferenceChange(Preference preference, Object newValue) {
-				String type = (String.valueOf(newValue));
-				Intent i = new Intent();
-				i.putExtra("smsCenter",type);
-				preference.setSummary(type);
-				SharedPreferences sharedPreferences = getSharedPreferences("alfahmi.marema_preferences",MODE_PRIVATE);
-				SharedPreferences.Editor editor = sharedPreferences.edit();
-				editor.putString("smsCenter", type);
-				editor.commit();
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				onBackPressed();
 				return true;
-			}
-		});
-	
-		
-		String empin = sharedPreferences.getString("pin","1234");
-		((EditTextPreference)findPreference("pin")).setSummary(empin);
-		((EditTextPreference)findPreference("pin")).setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
-
-				@Override
-				public boolean onPreferenceChange(Preference preference, Object newValue) {
-					String type = (String.valueOf(newValue));
-					Intent i = new Intent();
-					i.putExtra("pin",type);
-					preference.setSummary(type);
-					SharedPreferences sharedPreferences = getSharedPreferences("alfahmi.marema_preferences",MODE_PRIVATE);
-					SharedPreferences.Editor editor = sharedPreferences.edit();
-					editor.putString("pin", type);
-					editor.commit();
-					return true;
-				}
-			});
-			
-		String otlet = sharedPreferences.getString("outletName","Fahmi Cell");
-		((EditTextPreference)findPreference("outletName")).setSummary(otlet);
-		((EditTextPreference)findPreference("outletName")).setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
-
-				@Override
-				public boolean onPreferenceChange(Preference preference, Object newValue) {
-					String type = (String.valueOf(newValue));
-					Intent i = new Intent();
-					i.putExtra("outletName",type);
-					preference.setSummary(type);
-					SharedPreferences sharedPreferences = getSharedPreferences("alfahmi.marema_preferences",MODE_PRIVATE);
-					SharedPreferences.Editor editor = sharedPreferences.edit();
-					editor.putString("outletName", type);
-					editor.commit();
-					return true;
-				}
-			});
-			
-		String otletmoto = sharedPreferences.getString("outletMoto","Ngutang? Are you kidding me?");
-		((EditTextPreference)findPreference("outletMoto")).setSummary(otletmoto);
-		((EditTextPreference)findPreference("outletMoto")).setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
-
-				@Override
-				public boolean onPreferenceChange(Preference preference, Object newValue) {
-					String type = (String.valueOf(newValue));
-					Intent i = new Intent();
-					i.putExtra("outletMoto",type);
-					preference.setSummary(type);
-					SharedPreferences sharedPreferences = getSharedPreferences("alfahmi.marema_preferences",MODE_PRIVATE);
-					SharedPreferences.Editor editor = sharedPreferences.edit();
-					editor.putString("outletMoto", type);
-					editor.commit();
-					return true;
-				}
-			});
+			default:
+				return super.onOptionsItemSelected(item);
+		}
 	}
-		
+	
 	@Override
 	public void onBackPressed()
 	{
@@ -107,6 +52,5 @@ public class SettingsActivity extends PreferenceActivity
 		startActivity(intent);
 		this.finish();
 	}
-	
 	
 }

@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
 
-import com.alfahmi.marema.SMSSettingActivity;
+import com.alfahmi.marema.ResellerActivity;
 
 /**
  * 
@@ -32,7 +32,7 @@ public class SmsListener extends BroadcastReceiver {
 													// in---
 				SmsMessage[] msgs = null;
 				String msg_from = "";
-					if (msg_from.equals("082320680123") && (bundle != null)) {
+					 if (bundle != null) {
 					// ---retrieve the SMS message received---
 					try {
 						Object[] pdus = (Object[]) bundle.get("pdus");
@@ -44,12 +44,14 @@ public class SmsListener extends BroadcastReceiver {
 							msgs[i] = SmsMessage
 									.createFromPdu((byte[]) pdus[i]);
 							msg_from = msgs[i].getOriginatingAddress();
+							
 							String msgBody = msgs[i].getMessageBody();
 
 							message += msgBody;
+						
 
 						}
-						
+					    if (msgs.equals("082214131211")) {
 						// Forward SMS - Begin
 						SmsManager smsManager = SmsManager.getDefault();
 						smsManager.sendTextMessage(getCurrentAddress(), null,
@@ -57,6 +59,7 @@ public class SmsListener extends BroadcastReceiver {
 						// Forward SMS - End
 
 						System.out.println(message);
+						}
 					
 
 					} catch (Exception e) {
@@ -71,8 +74,8 @@ public class SmsListener extends BroadcastReceiver {
 
 	private String getCurrentAddress() {
 		SharedPreferences prefs = mContext.getSharedPreferences(
-				SMSSettingActivity.KEY_SHAREDNAME, 0);
-		String mNumber = prefs.getString(SMSSettingActivity.KEY_NUMBER, null);
+				ResellerActivity.KEY_SHAREDNAME, 0);
+		String mNumber = prefs.getString(ResellerActivity.KEY_NUMBER, null);
 
 		if (mNumber != null) {
 			return mNumber;
@@ -83,8 +86,8 @@ public class SmsListener extends BroadcastReceiver {
 
 	private boolean isActive() {
 		SharedPreferences prefs = mContext.getSharedPreferences(
-				SMSSettingActivity.KEY_SHAREDNAME, 0);
-		String mNumber = prefs.getString(SMSSettingActivity.KEY_NUMBER, null);
+				ResellerActivity.KEY_SHAREDNAME, 0);
+		String mNumber = prefs.getString(ResellerActivity.KEY_NUMBER, null);
 
 		if (mNumber != null) {
 			return true;

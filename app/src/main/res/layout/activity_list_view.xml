@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:orientation="vertical"
+    tools:context="com.alfahmi.marema.ListViewActivity" >
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:background="?attr/colorAccent">
+	<TextView
+        android:id="@+id/textView1"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:text="ID"
+		android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall"/>
+	<TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:text="NAME"
+		android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall"/>
+	<TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:text="PHONE"
+		android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall"/>
+	<TextView
+        android:id="@+id/textView4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:text="PRICE"
+		android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall"/>
+	</LinearLayout>
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" >
+    </ListView>
+    
+</LinearLayout>

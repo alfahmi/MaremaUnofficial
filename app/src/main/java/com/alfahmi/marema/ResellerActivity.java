@@ -23,7 +23,7 @@ import android.widget.Toast;
  * @author KAPLANDROID
  * 
  */
-public class SMSSettingActivity extends ActionBarActivity implements OnClickListener,
+public class ResellerActivity extends ActionBarActivity implements OnClickListener,
 		OnCheckedChangeListener {
 
 	Button btnRehber, btnSave;
@@ -127,7 +127,7 @@ public class SMSSettingActivity extends ActionBarActivity implements OnClickList
 					etPhoneNo.setText(getCurrentAddress());
 				} else {
 
-					Toast.makeText(SMSSettingActivity.this,
+					Toast.makeText(ResellerActivity.this,
 							R.string.smsNumberEmpty, Toast.LENGTH_LONG).show();
 				}
 			} else {
@@ -144,7 +144,7 @@ public class SMSSettingActivity extends ActionBarActivity implements OnClickList
 		editor.putString(KEY_NUMBER, null);
 		editor.commit();
 
-		Toast.makeText(SMSSettingActivity.this, R.string.smsDisabled,
+		Toast.makeText(ResellerActivity.this, R.string.smsDisabled,
 				Toast.LENGTH_LONG).show();
 	}
 
@@ -154,7 +154,7 @@ public class SMSSettingActivity extends ActionBarActivity implements OnClickList
 		editor.putString(KEY_NUMBER, etPhoneNo.getText().toString());
 		editor.commit();
 
-		Toast.makeText(SMSSettingActivity.this, R.string.smsEnabled,
+		Toast.makeText(ResellerActivity.this, R.string.smsEnabled,
 				Toast.LENGTH_LONG).show();
 	}
 

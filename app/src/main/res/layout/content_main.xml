@@ -36,6 +36,7 @@
             android:layout_width="45dp"
 			android:layout_height="45dp"
 			android:paddingRight="20dp"
+			android:id="@+id/alfahmi_ic_account"
             android:src="@drawable/ic_account" />
 
         <EditText
@@ -60,6 +61,7 @@
             android:layout_width="45dp"
 			android:layout_height="45dp"
 			android:paddingRight="20dp"
+			android:id="@+id/alfahmi_ic_phone"
             android:src="@drawable/ic_phone" />
 		
 		<EditText
@@ -86,9 +88,11 @@
             android:layout_width="45dp"
 			android:layout_height="45dp"
 			android:paddingRight="20dp"
+			android:id="@+id/alfahmi_ic_chart"
             android:src="@drawable/ic_cart" />
 		
           <Spinner
+		    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
 			android:layout_weight="1"
 			android:id="@+id/spinner1"
 			android:layout_width="wrap_content"
@@ -118,6 +122,7 @@
 				android:layout_width="45dp"
 				android:layout_height="45dp"
 				android:paddingRight="20dp"
+				android:id="@+id/alfahmi_ic_send"
 				android:src="@drawable/ic_send" />
 
 			<EditText
@@ -133,6 +138,7 @@
 		</LinearLayout>
 	
 	<Button
+		style="@style/AppTheme.Button"
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

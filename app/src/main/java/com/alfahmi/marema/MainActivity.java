@@ -1,34 +1,48 @@
 package com.alfahmi.marema;
 
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.content.*;
 import android.net.*;
 import android.os.*;
 import android.provider.*;
 import android.app.*;
 import android.util.*;
-import android.view.*;
+import android.view.View;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View.*;
-import android.widget.*;
+import android.widget.ImageButton;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Button;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
+import android.widget.AdapterView;
 
 import android.telephony.*;
 import android.database.*;
+import android.database.sqlite.SQLiteDatabase;
+import android.text.*;
+import android.widget.ImageView;
+import android.graphics.*;
 
-public class MainActivity extends ActionBarActivity  implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity  implements View.OnClickListener {
 	
-	EditText eName;
-	EditText ePhone;
-	EditText eSmsCenter;
-	EditText tPin;
+	EditText eName, ePhone, eSmsCenter, tPin;
+	TextView outletName, outletMoto, tMaremaCenter;
+	String Name, PhoneNumber, Price ;
+	ImageView Account, Phone, Chart, Send;
 	
 	ImageButton iFab;
     Spinner spNominal;
 	Button bSubmit;
-	
-	TextView outletName;
-	TextView outletMoto;
-	TextView tMaremaCenter;
-	static EditText tResponMarema;
+	SQLiteDatabase SQLITEDATABASE;
+
+	String SQLiteQuery;
+	Boolean CheckEditTextEmpty ;
 	
 	private final int PICK = 1;
 	
@@ -41,13 +55,21 @@ public class MainActivity extends ActionBarActivity  implements View.OnClickList
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		SharedPreferences sharedPreferences = getSharedPreferences("alfahmi.marema_preferences",Context.MODE_PRIVATE); 
 		String smsCenter = sharedPreferences.getString("smsCenter","telkomsel");
 		String empin = sharedPreferences.getString("pin","1234");
 		String otlet = sharedPreferences.getString("outletName","Fahmi Cell");
 		String otletmoto = sharedPreferences.getString("outletMoto","Ngutang? Are you kidding me?");
+		
 		setContentView(R.layout.content_main);
 		
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		toolbar.setTitle("");
+		toolbar.setLogo(R.drawable.ic_material_ui);
+        setSupportActionBar(toolbar);
+		
+		// FindViewById elemen
 		
 		eName = (EditText) findViewById(R.id.textView1);
 		ePhone = (EditText) findViewById(R.id.editText1);
@@ -58,8 +80,21 @@ public class MainActivity extends ActionBarActivity  implements View.OnClickList
 		outletName = (TextView) findViewById(R.id.alf_outlet);
 		outletMoto = (TextView) findViewById(R.id.alf_outlet_moto);
 		tMaremaCenter = (TextView) findViewById(R.id.alf_marema_center);
-		//tResponMarema = (EditText) findViewById(R.id.alf_respon_marema);
 		
+		// ImageView (icon)
+		Account = (ImageView) findViewById(R.id.alfahmi_ic_account);
+		Phone = (ImageView) findViewById(R.id.alfahmi_ic_phone);
+		Chart = (ImageView) findViewById(R.id.alfahmi_ic_chart);
+		Send = (ImageView) findViewById(R.id.alfahmi_ic_send);
+		
+		// Tint ImageView following ColorAccent Color
+		int color = getResources().getColor(R.color.warnaAksen);
+		Account.setColorFilter(color);
+		Phone.setColorFilter(color);
+		Chart.setColorFilter(color);
+		Send.setColorFilter(color);
+		
+		// SMS Center Option 
 		if ("telkomsel".equals(smsCenter))
 		{
 			eSmsCenter.setText("Telkomsel Center");
@@ -69,6 +104,7 @@ public class MainActivity extends ActionBarActivity  implements View.OnClickList
 			eSmsCenter.setText("Indosat Center");
 			tMaremaCenter.setText("085798561111");
 		}
+		// Outlet Name, Outlet Moto, Pin, FindContack Button and Price Configuration
 		outletName.setText(otlet);
 		outletMoto.setText(otletmoto);
 		tPin.setText(empin);
@@ -77,7 +113,7 @@ public class MainActivity extends ActionBarActivity  implements View.OnClickList
 
         // Initialize and set Adapter
         adapterNominal = new ArrayAdapter<String>(this,
-													   android.R.layout.simple_spinner_item, Nominal);
+	    android.R.layout.simple_spinner_item, Nominal);
         adapterNominal.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spNominal.setAdapter(adapterNominal);
 		// Tombol Submit
@@ -85,6 +121,7 @@ public class MainActivity extends ActionBarActivity  implements View.OnClickList
 
 				@Override
 				public void onClick(View v) {
+					AlfahmiDBCreate();
 
 					String phoneNo = ePhone.getText().toString();
 					String sTitik = ".";
@@ -96,7 +133,7 @@ public class MainActivity extends ActionBarActivity  implements View.OnClickList
 					try {
 						SmsManager smsManager = SmsManager.getDefault();
 						smsManager.sendTextMessage(tsmscenter, null, sms, null, null);
-						ePhone.setText("");
+						SubmitData2SQLiteDB();
 						Toast.makeText(getApplicationContext(), "SMS Sent!",
 									   Toast.LENGTH_LONG).show();
 					} catch (Exception e) {
@@ -105,6 +142,7 @@ public class MainActivity extends ActionBarActivity  implements View.OnClickList
 									   Toast.LENGTH_LONG).show();
 						e.printStackTrace();
 					}
+					
 
 				}
 			});
@@ -128,17 +166,50 @@ public class MainActivity extends ActionBarActivity  implements View.OnClickList
 				}
 			});
 	}
-	
-	public void recivedSms(String message) 
+	public void AlfahmiDBCreate(){
+
+    	SQLITEDATABASE = openOrCreateDatabase("AlfahmiDataBase", Context.MODE_PRIVATE, null);
+
+    	SQLITEDATABASE.execSQL("CREATE TABLE IF NOT EXISTS transactionTable(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, NAME VARCHAR, PHONE VARCHAR, PRICE VARCHAR);");
+    }
+
+    public void SubmitData2SQLiteDB(){
+
+        Name = eName.getText().toString();
+
+        PhoneNumber = ePhone.getText().toString();
+
+        Price = spNominal.getSelectedItem().toString();
+
+        CheckEditTextIsEmptyOrNot( Name,PhoneNumber, Price);
+
+        if(CheckEditTextEmpty == true)
         {
-       try 
-         {
-          tResponMarema.setText(message);
-         } 
-         catch (Exception e) 
-             {         
-                   }
-       }
+
+			SQLiteQuery = "INSERT INTO transactionTable (NAME,PHONE,PRICE) VALUES('"+Name+"', '"+PhoneNumber+"', '"+Price+"');";
+
+			SQLITEDATABASE.execSQL(SQLiteQuery);
+			ePhone.setText("");
+
+        }
+		else {
+
+			Toast.makeText(MainActivity.this,"Please Fill All the Fields", Toast.LENGTH_LONG).show();
+		}
+    }
+
+    public void CheckEditTextIsEmptyOrNot(String Name,String PhoneNumber, String Price ){
+
+		if(TextUtils.isEmpty(Name) || TextUtils.isEmpty(PhoneNumber) || TextUtils.isEmpty(Price)){
+
+         	CheckEditTextEmpty = false ;
+
+		}
+    	else {
+			CheckEditTextEmpty = true ;
+		}
+    }
+
 	   
 	public void onClick(View v) 
 	{
@@ -203,6 +274,18 @@ public class MainActivity extends ActionBarActivity  implements View.OnClickList
 			settingsIntent.setClass(this, com.alfahmi.marema.SettingsActivity.class);
 			startActivity(settingsIntent);
 			finish();
+
+            return true;
+        } else if (id == R.id.action_penjualan) {
+			Intent penjualanIntent = new Intent();
+			penjualanIntent.setClass(this, com.alfahmi.marema.PenjualanActivity.class);
+			startActivity(penjualanIntent);
+
+            return true;
+        } else if (id == R.id.action_reseller) {
+			Intent resellerIntent = new Intent();
+			resellerIntent.setClass(this, com.alfahmi.marema.ResellerActivity.class);
+			startActivity(resellerIntent);
 
             return true;
         }
