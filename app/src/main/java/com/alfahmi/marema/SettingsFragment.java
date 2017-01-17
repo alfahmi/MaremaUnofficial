@@ -25,7 +25,11 @@ public class SettingsFragment extends PreferenceFragment
 		SharedPreferences sharedPreferences = getActivity().getSharedPreferences("alfahmi.marema_preferences",context.MODE_PRIVATE); 
 
 		super.onCreate(savedInstanceState);
+<<<<<<< HEAD
 		addPreferencesFromResource(R.xml.alfahmi__preference);
+=======
+		addPreferencesFromResource(R.xml.alfahmi__settings);
+>>>>>>> origin/master
 
 		String smsCenter = sharedPreferences.getString("smsCenter","telkomsel");
 		((ListPreference)findPreference("smsCenter")).setSummary(smsCenter);

@@ -87,9 +87,15 @@
 			android:layout_width="45dp"
 			android:layout_height="45dp"
 			android:paddingRight="20dp"
+<<<<<<< HEAD:app/src/main/res/layout/alfahmi__main.xml
 			android:id="@+id/alfahmi_ic_coin"
 			android:src="@drawable/ic_coin" />
 	
+=======
+			android:id="@+id/alfahmi_ic_chart"
+            android:src="@drawable/ic_cart" />
+		
+>>>>>>> origin/master:app/src/main/res/layout/alfahmi__main.xml
           <Spinner
 		    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
 			android:layout_weight="1"

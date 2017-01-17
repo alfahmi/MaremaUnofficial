@@ -31,12 +31,20 @@ public class PenjualanActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+<<<<<<< HEAD
         setContentView(R.layout.alfahmi_penjualan);
+=======
+        setContentView(R.layout.activity_list_view);
+>>>>>>> origin/master
 		
 		getSupportActionBar().setHomeButtonEnabled(true);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setTitle("Penjualan"); 
+<<<<<<< HEAD
 		LISTVIEW = (ListView) findViewById(R.id.alfahmi__list_penjualan);
+=======
+		LISTVIEW = (ListView) findViewById(R.id.listView1);
+>>>>>>> origin/master
 
         SQLITEHELPER = new SQLiteHelper(this);
         

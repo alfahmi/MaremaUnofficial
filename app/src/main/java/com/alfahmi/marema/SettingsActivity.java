@@ -24,9 +24,15 @@ public class SettingsActivity extends AppCompatActivity
 		getSupportActionBar().setTitle("Pengaturan"); 
 		
 		fm = getSupportFragmentManager();
+<<<<<<< HEAD
 		if (fm.findFragmentById(R.id.alfahmi__preference_content) == null) {  
 			ft = fm.beginTransaction();
 			ft.replace(R.id.alfahmi__preference_content, new com.alfahmi.marema.SettingsFragment());
+=======
+		if (fm.findFragmentById(R.id.konten) == null) {  
+			ft = fm.beginTransaction();
+			ft.replace(R.id.konten, new com.alfahmi.marema.SettingsFragment());
+>>>>>>> origin/master
 			ft.commit();
 		}  
 	}

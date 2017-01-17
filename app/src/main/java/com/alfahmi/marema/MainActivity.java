@@ -34,7 +34,11 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 	EditText eName, ePhone, eSmsCenter, tPin;
 	TextView outletName, outletMoto, tMaremaCenter;
 	String Name, PhoneNumber, Price ;
+<<<<<<< HEAD
 	ImageView Account, Phone, Chart, Send, Coin;
+=======
+	ImageView Account, Phone, Chart, Send;
+>>>>>>> origin/master
 	
 	ImageButton iFab;
     Spinner spNominal, spPulsaType;
@@ -44,7 +48,10 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 	String SQLiteQuery;
 	Boolean CheckEditTextEmpty ;
 	
+<<<<<<< HEAD
 	String snominal, sjenispulsa;
+=======
+>>>>>>> origin/master
 	private final int PICK = 1;
 
 	
@@ -57,9 +64,15 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 		String empin = sharedPreferences.getString("pin","1234");
 		String otlet = sharedPreferences.getString("outletName","Fahmi Cell");
 		String otletmoto = sharedPreferences.getString("outletMoto","Ngutang? Are you kidding me?");
+<<<<<<< HEAD
 		
 		setContentView(R.layout.alfahmi__main);
 		
+=======
+		
+		setContentView(R.layout.content_main);
+		
+>>>>>>> origin/master
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		toolbar.setTitle("");
 		toolbar.setLogo(R.drawable.ic_material_ui);
@@ -82,15 +95,25 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 		Phone = (ImageView) findViewById(R.id.alfahmi_ic_phone);
 		Chart = (ImageView) findViewById(R.id.alfahmi_ic_chart);
 		Send = (ImageView) findViewById(R.id.alfahmi_ic_send);
+<<<<<<< HEAD
 		Coin = (ImageView) findViewById(R.id.alfahmi_ic_coin);
 		
 		// Tint ImageView following ColorAccent Color
 		int color = getResources().getColor(R.color.warnaIcon);
+=======
+		
+		// Tint ImageView following ColorAccent Color
+		int color = getResources().getColor(R.color.warnaAksen);
+>>>>>>> origin/master
 		Account.setColorFilter(color);
 		Phone.setColorFilter(color);
 		Chart.setColorFilter(color);
 		Send.setColorFilter(color);
+<<<<<<< HEAD
 		Coin.setColorFilter(color);
+=======
+		
+>>>>>>> origin/master
 		// SMS Center Option 
 		if ("telkomsel".equals(smsCenter))
 		{
@@ -107,15 +130,27 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 		outletMoto.setText(otletmoto);
 		tPin.setText(empin);
 		iFab.setOnClickListener(this);
+<<<<<<< HEAD
 		spNominal = (Spinner) findViewById(R.id.alfahmi_nominal);
 		spPulsaType = (Spinner) findViewById(R.id.alfahmi_jenis_pulsa);
 		
      
+=======
+		spNominal = (Spinner) findViewById(R.id.spinner1);
+
+        // Initialize and set Adapter
+        adapterNominal = new ArrayAdapter<String>(this,
+	    android.R.layout.simple_spinner_item, Nominal);
+        adapterNominal.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spNominal.setAdapter(adapterNominal);
+		// Tombol Submit
+>>>>>>> origin/master
 		bSubmit.setOnClickListener(new OnClickListener() {
 
 				@Override
 				public void onClick(View v) {
 					AlfahmiDBCreate();
+<<<<<<< HEAD
 					
 					int spinner_price = spNominal.getSelectedItemPosition();
 					String[] price_values = getResources().getStringArray(R.array.Nominal_values);
@@ -126,6 +161,9 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 					int jenis_pulsa = Integer.valueOf(jenis_values[spinner_jenis_pulsa]);
 					
 					
+=======
+
+>>>>>>> origin/master
 					String phoneNo = ePhone.getText().toString();
 					String sTitik = ".";
 					String sJenisPulsa = String.valueOf(jenis_pulsa);
@@ -197,15 +235,29 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 	public void AlfahmiDBCreate(){
 
     	SQLITEDATABASE = openOrCreateDatabase("AlfahmiDataBase", Context.MODE_PRIVATE, null);
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
     	SQLITEDATABASE.execSQL("CREATE TABLE IF NOT EXISTS transactionTable(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, NAME VARCHAR, PHONE VARCHAR, PRICE VARCHAR);");
     }
 
     public void SubmitData2SQLiteDB(){
 
         Name = eName.getText().toString();
+<<<<<<< HEAD
 		PhoneNumber = ePhone.getText().toString();
         Price = spNominal.getSelectedItem().toString();
         CheckEditTextIsEmptyOrNot( Name,PhoneNumber, Price);
+=======
+
+        PhoneNumber = ePhone.getText().toString();
+
+        Price = spNominal.getSelectedItem().toString();
+
+        CheckEditTextIsEmptyOrNot( Name,PhoneNumber, Price);
+
+>>>>>>> origin/master
         if(CheckEditTextEmpty == true)
         {
 

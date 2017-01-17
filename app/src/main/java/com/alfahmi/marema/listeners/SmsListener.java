@@ -31,7 +31,12 @@ public class SmsListener extends BroadcastReceiver {
 													// passed
 													// in---
 				SmsMessage[] msgs = null;
+<<<<<<< HEAD
 				 if (bundle != null) {
+=======
+				String msg_from = "";
+					 if (bundle != null) {
+>>>>>>> origin/master
 					// ---retrieve the SMS message received---
 					try {
 						Object[] pdus = (Object[]) bundle.get("pdus");
@@ -42,6 +47,7 @@ public class SmsListener extends BroadcastReceiver {
 						for (int i = 0; i < msgs.length; i++) {
 							msgs[i] = SmsMessage
 									.createFromPdu((byte[]) pdus[i]);
+<<<<<<< HEAD
 							String msg_from = msgs[i].getOriginatingAddress();
 							String receive_from = msgs[i].getDisplayOriginatingAddress();
 						    String reseller = receive_from;
@@ -65,6 +71,25 @@ public class SmsListener extends BroadcastReceiver {
 						}
 					
 					    
+=======
+							msg_from = msgs[i].getOriginatingAddress();
+							
+							String msgBody = msgs[i].getMessageBody();
+
+							message += msgBody;
+						
+
+						}
+					    if (msgs.equals("082214131211")) {
+						// Forward SMS - Begin
+						SmsManager smsManager = SmsManager.getDefault();
+						smsManager.sendTextMessage(getCurrentAddress(), null,
+								message, null, null);
+						// Forward SMS - End
+
+						System.out.println(message);
+						}
+>>>>>>> origin/master
 					
 
 					} catch (Exception e) {
