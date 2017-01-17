@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
 
-import com.alfahmi.marema.SMSSettingActivity;
+import com.alfahmi.marema.ResellerActivity;
 
 /**
  * 
@@ -31,8 +31,7 @@ public class SmsListener extends BroadcastReceiver {
 													// passed
 													// in---
 				SmsMessage[] msgs = null;
-				String msg_from = "";
-					if (msg_from.equals("082320680123") && (bundle != null)) {
+				 if (bundle != null) {
 					// ---retrieve the SMS message received---
 					try {
 						Object[] pdus = (Object[]) bundle.get("pdus");
@@ -43,20 +42,29 @@ public class SmsListener extends BroadcastReceiver {
 						for (int i = 0; i < msgs.length; i++) {
 							msgs[i] = SmsMessage
 									.createFromPdu((byte[]) pdus[i]);
-							msg_from = msgs[i].getOriginatingAddress();
+							String msg_from = msgs[i].getOriginatingAddress();
+							String receive_from = msgs[i].getDisplayOriginatingAddress();
+						    String reseller = receive_from;
 							String msgBody = msgs[i].getMessageBody();
 
 							message += msgBody;
+						try {
+							 if (msg_from.equals("082320680123")) {
+							 // Forward SMS - Begin
+								 SmsManager smsManager = SmsManager.getDefault();
+								 smsManager.sendTextMessage(getCurrentAddress(), null,
+										message, null, null);
+							 // Forward SMS - End
+
+									 System.out.println(message);
+								 }
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 
 						}
-						
-						// Forward SMS - Begin
-						SmsManager smsManager = SmsManager.getDefault();
-						smsManager.sendTextMessage(getCurrentAddress(), null,
-								message, null, null);
-						// Forward SMS - End
-
-						System.out.println(message);
+					
+					    
 					
 
 					} catch (Exception e) {
@@ -71,8 +79,8 @@ public class SmsListener extends BroadcastReceiver {
 
 	private String getCurrentAddress() {
 		SharedPreferences prefs = mContext.getSharedPreferences(
-				SMSSettingActivity.KEY_SHAREDNAME, 0);
-		String mNumber = prefs.getString(SMSSettingActivity.KEY_NUMBER, null);
+				ResellerActivity.KEY_SHAREDNAME, 0);
+		String mNumber = prefs.getString(ResellerActivity.KEY_NUMBER, null);
 
 		if (mNumber != null) {
 			return mNumber;
@@ -83,8 +91,8 @@ public class SmsListener extends BroadcastReceiver {
 
 	private boolean isActive() {
 		SharedPreferences prefs = mContext.getSharedPreferences(
-				SMSSettingActivity.KEY_SHAREDNAME, 0);
-		String mNumber = prefs.getString(SMSSettingActivity.KEY_NUMBER, null);
+				ResellerActivity.KEY_SHAREDNAME, 0);
+		String mNumber = prefs.getString(ResellerActivity.KEY_NUMBER, null);
 
 		if (mNumber != null) {
 			return true;

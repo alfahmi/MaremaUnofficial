@@ -36,6 +36,7 @@
             android:layout_width="45dp"
 			android:layout_height="45dp"
 			android:paddingRight="20dp"
+			android:id="@+id/alfahmi_ic_account"
             android:src="@drawable/ic_account" />
 
         <EditText
@@ -60,6 +61,7 @@
             android:layout_width="45dp"
 			android:layout_height="45dp"
 			android:paddingRight="20dp"
+			android:id="@+id/alfahmi_ic_phone"
             android:src="@drawable/ic_phone" />
 		
 		<EditText
@@ -81,21 +83,21 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
         android:orientation="horizontal" >
-
-        <ImageView
-            android:layout_width="45dp"
+		<ImageView
+			android:layout_width="45dp"
 			android:layout_height="45dp"
 			android:paddingRight="20dp"
-            android:src="@drawable/ic_cart" />
-		
+			android:id="@+id/alfahmi_ic_coin"
+			android:src="@drawable/ic_coin" />
+	
           <Spinner
+		    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
 			android:layout_weight="1"
-			android:id="@+id/spinner1"
+			android:id="@+id/alfahmi_nominal"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:hint="Price"
-			android:textAppearance="?android:attr/textAppearanceMedium" 
-			android:prompt="@string/business_prompt"></Spinner>
+			android:entries="@array/Nominal"
+			android:textAppearance="?android:attr/textAppearanceMedium" ></Spinner>
 		<EditText
 			android:id="@+id/alf_pin"
 			android:layout_width="60dp"
@@ -114,10 +116,34 @@
 			android:layout_marginTop="7dp"
 			android:orientation="horizontal" >
 
+
 			<ImageView
 				android:layout_width="45dp"
 				android:layout_height="45dp"
 				android:paddingRight="20dp"
+				android:id="@+id/alfahmi_ic_chart"
+				android:src="@drawable/ic_cart" />
+			
+			<Spinner
+				style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+				android:layout_weight="1"
+				android:id="@+id/alfahmi_jenis_pulsa"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:entries="@array/Jenis_pulsa"
+				android:textAppearance="?android:attr/textAppearanceMedium" ></Spinner>
+		</LinearLayout>
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="7dp"
+			android:orientation="horizontal" >
+
+			<ImageView
+				android:layout_width="45dp"
+				android:layout_height="45dp"
+				android:paddingRight="20dp"
+				android:id="@+id/alfahmi_ic_send"
 				android:src="@drawable/ic_send" />
 
 			<EditText
@@ -133,6 +159,7 @@
 		</LinearLayout>
 	
 	<Button
+		style="@style/AppTheme.Button"
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

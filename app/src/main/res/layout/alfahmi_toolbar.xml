@@ -19,7 +19,7 @@
 		android:textSize="30dp"
 		android:layout_marginTop="30dp"
 		android:id="@+id/alf_outlet"
-		android:textColor="?attr/colorAccent"
+		android:textColor="#ffffff"
 		android:layout_gravity="center_horizontal"
 		android:text="FAHMI CELL" />
 	<TextView

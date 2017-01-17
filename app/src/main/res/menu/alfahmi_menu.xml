@@ -8,9 +8,12 @@
 		android:title="Reseller"
 		android:showAsAction="always" />
 	<item
+		android:id="@+id/action_penjualan"
+		android:title="Penjualan"
+		android:showAsAction="always" />
+	<item
 		android:id="@+id/action_settings"
 		android:title="Pengaturan"
-		android:icon="@drawable/ic_border_color"
 		android:showAsAction="always" />
 
 </menu>

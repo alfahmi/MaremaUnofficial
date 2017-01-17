@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:orientation="vertical"
+    tools:context="com.alfahmi.marema.PenjualanActivity" >
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:background="?attr/colorAccent">
+	<TextView
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:text="NO"
+		android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall"/>
+	<TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:text="NAMA"
+		android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall"/>
+	<TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:text="NOMOR"
+		android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall"/>
+	<TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:text="HARGA"
+		android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall"/>
+	</LinearLayout>
+    <ListView
+        android:id="@+id/alfahmi__list_penjualan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" >
+    </ListView>
+    
+</LinearLayout>

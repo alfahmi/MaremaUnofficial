@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.alfahmi.marema"
-        minSdkVersion 9
+        minSdkVersion 7
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
@@ -21,6 +21,7 @@ android {
 }
 
 dependencies {
+
     compile fileTree(dir: 'libs', include: ['*.jar'])
-	compile 'com.android.support:appcompat-v7:21.0.0'
+	compile 'com.android.support:appcompat-v7:23.1.1'
 }
